@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+To Do List
+{% endblock %}
+
+{% block content %}
+<h1>To Do List</h1>
+<section id="to_do_section">
+    <form id="to_do_form" action="{{ url_for('views.update_tasks') }}" method="post">
+        {% for task in tasks %}
+        <div class="to_do">
+            <input type="checkbox" id="{{ task.id }}" name="task_{{ task.id }}" {% if task.complete %}checked{% endif %}>
+            <label for="{{ task.id }}">{{ task.name }}</label>
+            <a href="{{ url_for('views.delete_task', task_id=task.id) }}" class="delete_task" onclick="return confirm('Are you sure you want to delete this task?');">&#10006;</a>
+        </div>
+        {% endfor %}
+
+
+
+        <!-- <div class="to_do">
+            <input type="checkbox" id="cat_dishes" name="cat_dishes">
+            <label for="cat_dishes">Cat Dishes</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="cat_water" name="cat_water">
+            <label for="cat_water">Cat Water</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="Dishes" name="Dishes">
+            <label for="Dishes">Dishes</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="garbage" name="garbage">
+            <label for="garbage">Garbage</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="sweep" name="sweep">
+            <label for="sweep">Sweep</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="mop" name="mop">
+            <label for="mop">Mop</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="dust" name="dust">
+            <label for="dust">Dust</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="bathroom" name="bathroom">
+            <label for="bathroom">Bathroom</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="vaccuum" name="vaccuum">
+            <label for="vaccuum">Vaccuum</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="workout" name="workout">
+            <label for="workout">Workout</label>
+        </div>
+        <div class="to_do">
+            <input type="checkbox" id="milk" name="milk">
+            <label for="milk">Milk</label>
+        </div> -->
+        <div class="button">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</section>
+
+<section id="new_task_section">
+    <form id="new_task_form" action="{{ url_for('views.add_task') }}" method="post">
+        <div>
+            <label for="new_task">Enter a new task:</label>
+            <input type="text" id="new_task" name="new_task" placeholder="e.g. Wash dishes">
+        </div>
+        <div class="button">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</section>
+{% endblock %}
