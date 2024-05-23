@@ -79,18 +79,39 @@ section {
     min-width: 400px;
 }
 
+form {
+  padding: 30px 0;
+}
+
 .button {
     text-align: center;
+    padding-top: 1em;
     margin: 0 auto;
 }
 
 .delete_task {
-  color: red;
-  text-decoration: none;
-  margin-left: 10px;
+    color: red;
+    text-decoration: none;
+    margin-left: 10px;
 }
 
 .delete_task:hover {
-  color: darkred;
-  cursor: pointer;
+    color: darkred;
+    cursor: pointer;
+}
+
+#new_task_form {
+    border-top: 2px solid lightgray;
+}
+
+#new_task_form label {
+  align-items: start;
+}
+
+#new_task_form input {
+  align-items: end;
+}
+
+#new_task_container {
+  display: flex;
 }
